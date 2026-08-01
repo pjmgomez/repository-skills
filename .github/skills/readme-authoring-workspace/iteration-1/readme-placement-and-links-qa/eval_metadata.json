@@ -1,0 +1,13 @@
+{
+  "eval_id": 2,
+  "eval_name": "readme-placement-and-links-qa",
+  "prompt": "Quick question before I write my README: where in the repo should the README file actually go so GitHub picks it up, how do I get that table-of-contents outline thing, and how should I link between sections and to other files like CONTRIBUTING? Just explain \u2014 don't create any files yet.",
+  "assertions": [
+    "Explains that GitHub surfaces the README from .github/, the repository root, or docs/",
+    "Explains the precedence order (.github/ first, then root, then docs/)",
+    "Explains that GitHub auto-generates the table of contents / outline from the heading structure",
+    "Explains that sections are linkable via anchors generated from their headings",
+    "Explains that in-repo links should be relative (or that absolute links break in clones/forks)",
+    "No files were created or modified (the response stayed read-only)"
+  ]
+}

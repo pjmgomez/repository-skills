@@ -1,0 +1,40 @@
+{
+  "expectations": [
+    {
+      "text": "Explains that GitHub surfaces the README from .github/, the repository root, or docs/",
+      "passed": false,
+      "evidence": "doesn't name all three locations"
+    },
+    {
+      "text": "Explains the precedence order (.github/ first, then root, then docs/)",
+      "passed": false,
+      "evidence": "precedence order not explained"
+    },
+    {
+      "text": "Explains that GitHub auto-generates the table of contents / outline from the heading structure",
+      "passed": false,
+      "evidence": "auto-TOC from headings not explained"
+    },
+    {
+      "text": "Explains that sections are linkable via anchors generated from their headings",
+      "passed": true,
+      "evidence": "explains heading anchors/section links"
+    },
+    {
+      "text": "Explains that in-repo links should be relative (or that absolute links break in clones/forks)",
+      "passed": false,
+      "evidence": "relative-link guidance missing"
+    },
+    {
+      "text": "No files were created or modified (the response stayed read-only)",
+      "passed": true,
+      "evidence": "no files written (read-only)"
+    }
+  ],
+  "summary": {
+    "passed": 2,
+    "failed": 4,
+    "total": 6,
+    "pass_rate": 0.3333
+  }
+}

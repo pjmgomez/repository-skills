@@ -1,13 +1,16 @@
 ---
-description: "Use when running, grading, or extending the evaluation harness under github-repo-setup-workspace (the per-skill `*-workspace/` A/B eval convention). Covers where evals are defined, the with_skill vs without_skill run layout, how grade.py scores outputs deterministically, and the benchmark.json the eval viewer reads."
-applyTo: ".github/skills/github-repo-setup-workspace/**"
+description: "Use when running, grading, or extending a skill's evaluation harness — the per-skill `*-workspace/` folder (e.g. github-repo-setup-workspace, readme-authoring-workspace) that A/B-tests a skill. Covers where evals are defined, the with_skill vs without_skill run layout, how grade.py scores outputs deterministically, and the benchmark.json the eval viewer reads."
+applyTo: ".github/skills/*-workspace/**"
 ---
 # Evaluating a skill (the `*-workspace/` harness)
 
 Repo-wide context is in [AGENTS.md](../../AGENTS.md). A skill's evaluation harness sits beside it in
-a `*-workspace/` folder — currently only
-[github-repo-setup-workspace/](../skills/github-repo-setup-workspace/). It A/B-tests the skill by
-running each eval twice, `with_skill` and `without_skill`, then grades both against fixed assertions.
+a `*-workspace/` folder — [github-repo-setup-workspace/](../skills/github-repo-setup-workspace/) and
+[readme-authoring-workspace/](../skills/readme-authoring-workspace/). Each A/B-tests its skill by
+running every eval twice, `with_skill` and `without_skill`, then grades both against fixed assertions.
+The detailed walkthrough below uses `github-repo-setup` as the worked example; `readme-authoring`
+mirrors it (same `grade.py` shape and `iteration-1/` layout) with its own evals, described under
+[Per-skill differences](#per-skill-differences) below.
 
 ## Where things live
 
@@ -46,3 +49,19 @@ and per-`expectations` `{text, passed, evidence}`.
 
 > `time_seconds`, `tokens`, and `tool_calls` are always `0`: this environment doesn't surface
 > subagent duration/token metrics. Don't read those zeros as real measurements.
+
+## Per-skill differences
+
+The layout above is shared; the evals and seeds differ per skill.
+
+- **github-repo-setup** — evals `scaffold` (starts from an empty `repo/`), `audit` (seeded `repo/`,
+  reply graded as text at `outputs/report.md`), and `add-security` (seeded `repo/`). Its `AUDIT_SEED`
+  / `ADDSEC_SEED` seeds live in
+  [grade.py](../skills/github-repo-setup-workspace/grade.py).
+- **readme-authoring** — evals `author` (write a README from scratch), `improve` (rewrite a seeded
+  weak README in place), and `readme-placement-and-links-qa` (a read-only explanation graded as text
+  at `outputs/report.md`, like `audit`). Its `WEAK_README` / `TINYTOML_SRC` seeds live in
+  [grade.py](../skills/readme-authoring-workspace/grade.py). It also ships one extra artifact,
+  [trigger-eval.json](../skills/readme-authoring-workspace/trigger-eval.json) — `should_trigger`
+  true/false queries that check the skill's `description` fires on the right prompts
+  (github-repo-setup has no equivalent).

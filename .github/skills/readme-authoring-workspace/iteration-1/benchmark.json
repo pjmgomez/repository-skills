@@ -1,0 +1,385 @@
+{
+  "metadata": {
+    "skill_name": "readme-authoring",
+    "evals_run": [
+      0,
+      1,
+      2
+    ],
+    "runs_per_configuration": 1
+  },
+  "runs": [
+    {
+      "eval_id": 0,
+      "eval_name": "author-readme-from-scratch",
+      "configuration": "with_skill",
+      "run_number": 1,
+      "result": {
+        "pass_rate": 1.0,
+        "passed": 9,
+        "failed": 0,
+        "total": 9,
+        "time_seconds": 0,
+        "tokens": 0,
+        "tool_calls": 0,
+        "errors": 0
+      },
+      "expectations": [
+        {
+          "text": "README.md exists at the repository root",
+          "passed": true,
+          "evidence": "found README.md at root"
+        },
+        {
+          "text": "The README has exactly one top-level '# ' title heading",
+          "passed": true,
+          "evidence": "1 top-level '#' heading(s)"
+        },
+        {
+          "text": "The README describes what the project does near the top (summary paragraph or a what/overview section)",
+          "passed": true,
+          "evidence": "has a summary/what-it-does up top"
+        },
+        {
+          "text": "The README includes an installation or getting-started section",
+          "passed": true,
+          "evidence": "has an install/getting-started section"
+        },
+        {
+          "text": "The README includes a usage or examples section",
+          "passed": true,
+          "evidence": "has a usage/examples section"
+        },
+        {
+          "text": "The README shows a usage example in a fenced code block",
+          "passed": true,
+          "evidence": "has a fenced code block"
+        },
+        {
+          "text": "The README mentions the project name 'tinytoml'",
+          "passed": true,
+          "evidence": "mentions 'tinytoml'"
+        },
+        {
+          "text": "The README uses at least three '## ' section headings (so GitHub's auto table of contents is useful)",
+          "passed": true,
+          "evidence": "6 '##' section headings"
+        },
+        {
+          "text": "Any in-repo links use relative paths (no absolute github.com blob/tree/raw self-links)",
+          "passed": true,
+          "evidence": "no absolute in-repo links"
+        }
+      ]
+    },
+    {
+      "eval_id": 0,
+      "eval_name": "author-readme-from-scratch",
+      "configuration": "without_skill",
+      "run_number": 1,
+      "result": {
+        "pass_rate": 0.8889,
+        "passed": 8,
+        "failed": 1,
+        "total": 9,
+        "time_seconds": 0,
+        "tokens": 0,
+        "tool_calls": 0,
+        "errors": 0
+      },
+      "expectations": [
+        {
+          "text": "README.md exists at the repository root",
+          "passed": true,
+          "evidence": "found README.md at root"
+        },
+        {
+          "text": "The README has exactly one top-level '# ' title heading",
+          "passed": true,
+          "evidence": "1 top-level '#' heading(s)"
+        },
+        {
+          "text": "The README describes what the project does near the top (summary paragraph or a what/overview section)",
+          "passed": true,
+          "evidence": "has a summary/what-it-does up top"
+        },
+        {
+          "text": "The README includes an installation or getting-started section",
+          "passed": true,
+          "evidence": "has an install/getting-started section"
+        },
+        {
+          "text": "The README includes a usage or examples section",
+          "passed": true,
+          "evidence": "has a usage/examples section"
+        },
+        {
+          "text": "The README shows a usage example in a fenced code block",
+          "passed": true,
+          "evidence": "has a fenced code block"
+        },
+        {
+          "text": "The README mentions the project name 'tinytoml'",
+          "passed": true,
+          "evidence": "mentions 'tinytoml'"
+        },
+        {
+          "text": "The README uses at least three '## ' section headings (so GitHub's auto table of contents is useful)",
+          "passed": false,
+          "evidence": "2 '##' section headings"
+        },
+        {
+          "text": "Any in-repo links use relative paths (no absolute github.com blob/tree/raw self-links)",
+          "passed": true,
+          "evidence": "no absolute in-repo links"
+        }
+      ]
+    },
+    {
+      "eval_id": 1,
+      "eval_name": "improve-weak-readme",
+      "configuration": "with_skill",
+      "run_number": 1,
+      "result": {
+        "pass_rate": 1.0,
+        "passed": 7,
+        "failed": 0,
+        "total": 7,
+        "time_seconds": 0,
+        "tokens": 0,
+        "tool_calls": 0,
+        "errors": 0
+      },
+      "expectations": [
+        {
+          "text": "The rewritten README preserves the project name 'lumen'",
+          "passed": true,
+          "evidence": "mentions 'lumen'"
+        },
+        {
+          "text": "The rewritten README has exactly one top-level '# ' title heading",
+          "passed": true,
+          "evidence": "1 top-level '#' heading(s)"
+        },
+        {
+          "text": "The rewritten README adds at least three standard sections (what/overview, install, usage, contributing, license) as '##' headings",
+          "passed": true,
+          "evidence": "3 standard sections present"
+        },
+        {
+          "text": "The rewritten README has no skipped heading levels",
+          "passed": true,
+          "evidence": "no skipped heading levels"
+        },
+        {
+          "text": "The rewritten README includes a usage example in a fenced code block",
+          "passed": true,
+          "evidence": "has a fenced code block"
+        },
+        {
+          "text": "In-repo links are relative (the original absolute github.com link to CONTRIBUTING was relativized)",
+          "passed": true,
+          "evidence": "absolute link relativized (relative CONTRIBUTING link present)"
+        },
+        {
+          "text": "The rewritten README preserves real project facts (mentions Node and at least one feature such as levels, colors, or json)",
+          "passed": true,
+          "evidence": "preserves Node + a feature"
+        }
+      ]
+    },
+    {
+      "eval_id": 1,
+      "eval_name": "improve-weak-readme",
+      "configuration": "without_skill",
+      "run_number": 1,
+      "result": {
+        "pass_rate": 0.7143,
+        "passed": 5,
+        "failed": 2,
+        "total": 7,
+        "time_seconds": 0,
+        "tokens": 0,
+        "tool_calls": 0,
+        "errors": 0
+      },
+      "expectations": [
+        {
+          "text": "The rewritten README preserves the project name 'lumen'",
+          "passed": true,
+          "evidence": "mentions 'lumen'"
+        },
+        {
+          "text": "The rewritten README has exactly one top-level '# ' title heading",
+          "passed": true,
+          "evidence": "1 top-level '#' heading(s)"
+        },
+        {
+          "text": "The rewritten README adds at least three standard sections (what/overview, install, usage, contributing, license) as '##' headings",
+          "passed": true,
+          "evidence": "3 standard sections present"
+        },
+        {
+          "text": "The rewritten README has no skipped heading levels",
+          "passed": true,
+          "evidence": "no skipped heading levels"
+        },
+        {
+          "text": "The rewritten README includes a usage example in a fenced code block",
+          "passed": false,
+          "evidence": "no fenced code block"
+        },
+        {
+          "text": "In-repo links are relative (the original absolute github.com link to CONTRIBUTING was relativized)",
+          "passed": false,
+          "evidence": "absolute github.com in-repo link remains"
+        },
+        {
+          "text": "The rewritten README preserves real project facts (mentions Node and at least one feature such as levels, colors, or json)",
+          "passed": true,
+          "evidence": "preserves Node + a feature"
+        }
+      ]
+    },
+    {
+      "eval_id": 2,
+      "eval_name": "readme-placement-and-links-qa",
+      "configuration": "with_skill",
+      "run_number": 1,
+      "result": {
+        "pass_rate": 1.0,
+        "passed": 6,
+        "failed": 0,
+        "total": 6,
+        "time_seconds": 0,
+        "tokens": 0,
+        "tool_calls": 0,
+        "errors": 0
+      },
+      "expectations": [
+        {
+          "text": "Explains that GitHub surfaces the README from .github/, the repository root, or docs/",
+          "passed": true,
+          "evidence": "names .github/, root, and docs/"
+        },
+        {
+          "text": "Explains the precedence order (.github/ first, then root, then docs/)",
+          "passed": true,
+          "evidence": "explains precedence (.github first)"
+        },
+        {
+          "text": "Explains that GitHub auto-generates the table of contents / outline from the heading structure",
+          "passed": true,
+          "evidence": "explains auto-generated TOC from headings"
+        },
+        {
+          "text": "Explains that sections are linkable via anchors generated from their headings",
+          "passed": true,
+          "evidence": "explains heading anchors/section links"
+        },
+        {
+          "text": "Explains that in-repo links should be relative (or that absolute links break in clones/forks)",
+          "passed": true,
+          "evidence": "explains relative vs absolute links"
+        },
+        {
+          "text": "No files were created or modified (the response stayed read-only)",
+          "passed": true,
+          "evidence": "no files written (read-only)"
+        }
+      ]
+    },
+    {
+      "eval_id": 2,
+      "eval_name": "readme-placement-and-links-qa",
+      "configuration": "without_skill",
+      "run_number": 1,
+      "result": {
+        "pass_rate": 0.3333,
+        "passed": 2,
+        "failed": 4,
+        "total": 6,
+        "time_seconds": 0,
+        "tokens": 0,
+        "tool_calls": 0,
+        "errors": 0
+      },
+      "expectations": [
+        {
+          "text": "Explains that GitHub surfaces the README from .github/, the repository root, or docs/",
+          "passed": false,
+          "evidence": "doesn't name all three locations"
+        },
+        {
+          "text": "Explains the precedence order (.github/ first, then root, then docs/)",
+          "passed": false,
+          "evidence": "precedence order not explained"
+        },
+        {
+          "text": "Explains that GitHub auto-generates the table of contents / outline from the heading structure",
+          "passed": false,
+          "evidence": "auto-TOC from headings not explained"
+        },
+        {
+          "text": "Explains that sections are linkable via anchors generated from their headings",
+          "passed": true,
+          "evidence": "explains heading anchors/section links"
+        },
+        {
+          "text": "Explains that in-repo links should be relative (or that absolute links break in clones/forks)",
+          "passed": false,
+          "evidence": "relative-link guidance missing"
+        },
+        {
+          "text": "No files were created or modified (the response stayed read-only)",
+          "passed": true,
+          "evidence": "no files written (read-only)"
+        }
+      ]
+    }
+  ],
+  "run_summary": {
+    "with_skill": {
+      "pass_rate": {
+        "mean": 1.0,
+        "stddev": 0.0,
+        "min": 1.0,
+        "max": 1.0
+      },
+      "time_seconds": {
+        "mean": 0,
+        "stddev": 0
+      },
+      "tokens": {
+        "mean": 0,
+        "stddev": 0
+      }
+    },
+    "without_skill": {
+      "pass_rate": {
+        "mean": 0.6455,
+        "stddev": 0.2841,
+        "min": 0.3333,
+        "max": 0.8889
+      },
+      "time_seconds": {
+        "mean": 0,
+        "stddev": 0
+      },
+      "tokens": {
+        "mean": 0,
+        "stddev": 0
+      }
+    },
+    "delta": {
+      "pass_rate": "+0.35",
+      "time_seconds": "n/a",
+      "tokens": "n/a"
+    }
+  },
+  "notes": [
+    "Grading is deterministic and file-based; see each run's grading.json for per-assertion evidence.",
+    "Timing and token metrics were not captured in this environment, so time/token columns read 0.",
+    "Runs were produced in-environment (no independent task-executing subagents are available here), so the without_skill outputs represent a competent but unguided attempt; the delta illustrates the skill's structural guidance rather than a blind measurement."
+  ]
+}

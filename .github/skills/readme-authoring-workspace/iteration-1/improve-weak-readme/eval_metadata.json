@@ -1,0 +1,14 @@
+{
+  "eval_id": 1,
+  "eval_name": "improve-weak-readme",
+  "prompt": "Here's my repo. The README is a mess \u2014 it's basically a wall of text with a couple of stray headings. It's a small Node logging library called lumen. Can you rewrite it into a proper, well-structured README? Keep the actual facts about the project.",
+  "assertions": [
+    "The rewritten README preserves the project name 'lumen'",
+    "The rewritten README has exactly one top-level '# ' title heading",
+    "The rewritten README adds at least three standard sections (what/overview, install, usage, contributing, license) as '##' headings",
+    "The rewritten README has no skipped heading levels",
+    "The rewritten README includes a usage example in a fenced code block",
+    "In-repo links are relative (the original absolute github.com link to CONTRIBUTING was relativized)",
+    "The rewritten README preserves real project facts (mentions Node and at least one feature such as levels, colors, or json)"
+  ]
+}

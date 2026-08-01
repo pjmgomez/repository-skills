@@ -1,0 +1,57 @@
+{
+  "skill_name": "readme-authoring",
+  "evals": [
+    {
+      "id": 0,
+      "name": "author-readme-from-scratch",
+      "kind": "author",
+      "prompt": "I just built a small Python library called tinytoml \u2014 it parses TOML text into a dict and serializes a dict back to TOML. The code is in the repo I gave you (tinytoml.py). There's no README yet. Can you write me a proper README for it?",
+      "expected_output": "A README.md at the repo root with a single '# tinytoml' title, a short summary of what it does near the top, installation and usage sections (usage shown as a runnable code example), pointers to contributing/getting help, and a clean '##' heading structure. Any links to other repo files are relative.",
+      "files": [],
+      "expectations": [
+        "README.md exists at the repository root",
+        "The README has exactly one top-level '# ' title heading",
+        "The README describes what the project does near the top (summary paragraph or a what/overview section)",
+        "The README includes an installation or getting-started section",
+        "The README includes a usage or examples section",
+        "The README shows a usage example in a fenced code block",
+        "The README mentions the project name 'tinytoml'",
+        "The README uses at least three '## ' section headings (so GitHub's auto table of contents is useful)",
+        "Any in-repo links use relative paths (no absolute github.com blob/tree/raw self-links)"
+      ]
+    },
+    {
+      "id": 1,
+      "name": "improve-weak-readme",
+      "kind": "improve",
+      "prompt": "Here's my repo. The README is a mess \u2014 it's basically a wall of text with a couple of stray headings. It's a small Node logging library called lumen. Can you rewrite it into a proper, well-structured README? Keep the actual facts about the project.",
+      "expected_output": "The existing README.md rewritten in place: a single '# lumen' title, the wall of text broken into standard '##' sections (install, usage, contributing, etc.), a usage code example, the second stray '# Notes' heading demoted or removed so there's one title, the absolute CONTRIBUTING link relativized, and the project's real facts (name 'lumen', Node, log levels/colors/json) preserved.",
+      "files": [],
+      "expectations": [
+        "The rewritten README preserves the project name 'lumen'",
+        "The rewritten README has exactly one top-level '# ' title heading",
+        "The rewritten README adds at least three of the standard sections (what/overview, install, usage, contributing, license) via '##' headings",
+        "The rewritten README has no skipped heading levels",
+        "The rewritten README includes a usage example in a fenced code block",
+        "In-repo links are relative (the original absolute github.com link to CONTRIBUTING was relativized)",
+        "The rewritten README preserves real project facts (mentions Node and at least one feature such as levels, colors, or json)"
+      ]
+    },
+    {
+      "id": 2,
+      "name": "readme-placement-and-links-qa",
+      "kind": "qa",
+      "prompt": "Quick question before I write my README: where in the repo should the README file actually go so GitHub picks it up, how do I get that table-of-contents outline thing, and how should I link between sections and to other files like CONTRIBUTING? Just explain \u2014 don't create any files yet.",
+      "expected_output": "A read-only explanation: README is surfaced from .github/, the repo root, or docs/ (with .github/ taking precedence, then root, then docs/); GitHub auto-generates the table of contents from the heading structure; sections are linkable via the anchors generated from headings; and in-repo links should be relative (absolute links break in clones/forks, and link text must stay on one line). No files are created or modified.",
+      "files": [],
+      "expectations": [
+        "Explains that GitHub surfaces the README from .github/, the repository root, or docs/",
+        "Explains the precedence order (.github/ first, then root, then docs/)",
+        "Explains that GitHub auto-generates the table of contents / outline from the heading structure",
+        "Explains that sections are linkable via anchors generated from their headings",
+        "Explains that in-repo links should be relative (or that absolute links break in clones/forks)",
+        "No files were created or modified (the response stayed read-only)"
+      ]
+    }
+  ]
+}

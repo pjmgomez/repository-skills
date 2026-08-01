@@ -1,7 +1,7 @@
 ---
 description: 'Run and grade a skill A/B evaluation harness (the *-workspace/ convention): execute each eval with_skill and without_skill, then score with grade.py. Use when the user wants to run, grade, benchmark, or re-run a skill evaluation, or refresh benchmark.json. Do NOT use to author evals from scratch or to change grading assertions.'
 name: 'Run Skill Evals'
-argument-hint: 'skill name (defaults to the only *-workspace/ present)'
+argument-hint: 'skill name (which *-workspace/ to run)'
 agent: 'agent'
 ---
 
@@ -10,8 +10,10 @@ Run and grade a skill's evaluation harness, following
 [AGENTS.md](../../AGENTS.md)). The harness A/B-tests a skill by running each eval twice —
 `with_skill` and `without_skill` — then grading both against fixed, on-disk assertions.
 
-Target skill: read it from the argument. If omitted, use the only `*-workspace/` present (currently
-[github-repo-setup-workspace/](../skills/github-repo-setup-workspace/)).
+Target skill: read it from the argument. If omitted, use the only `*-workspace/` present, or ask
+which one when several exist — the repo currently has
+[github-repo-setup-workspace/](../skills/github-repo-setup-workspace/) and
+[readme-authoring-workspace/](../skills/readme-authoring-workspace/).
 
 ## Steps
 

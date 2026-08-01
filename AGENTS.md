@@ -9,10 +9,12 @@ application — there is no app to build or run. Each skill lives in its own fol
 `.github/skills/<name>/` and is self-contained. The unit of work is a **single skill**, so scope
 changes to one skill folder unless asked otherwise.
 
-This checkout currently contains a single skill — [github-repo-setup](.github/skills/github-repo-setup/SKILL.md) —
-alongside its evaluation workspace, [github-repo-setup-workspace/](.github/skills/github-repo-setup-workspace/).
-Use that skill's `SKILL.md` as the worked example of the conventions below; the point-of-edit
-checklist for frontmatter is [.github/instructions/skill-authoring.instructions.md](.github/instructions/skill-authoring.instructions.md).
+This checkout contains two skills — [github-repo-setup](.github/skills/github-repo-setup/SKILL.md)
+and [readme-authoring](.github/skills/readme-authoring/SKILL.md) — each alongside its own evaluation
+workspace ([github-repo-setup-workspace/](.github/skills/github-repo-setup-workspace/) and
+[readme-authoring-workspace/](.github/skills/readme-authoring-workspace/)). Use `github-repo-setup`'s
+`SKILL.md` as the worked example of the conventions below; the point-of-edit checklist for frontmatter
+is [.github/instructions/skill-authoring.instructions.md](.github/instructions/skill-authoring.instructions.md).
 
 ## Skill anatomy
 
@@ -28,23 +30,21 @@ checklist for frontmatter is [.github/instructions/skill-authoring.instructions.
 
 ## SKILL.md frontmatter rules
 
-Frontmatter is YAML between `---` markers. These rules are the source of truth. Only these keys are
-allowed:
-
-`name`, `description`, `license`, `allowed-tools`, `metadata`, `compatibility`
-
-- `name` (required): kebab-case (`^[a-z0-9-]+$`), ≤64 chars, and **must equal the folder name**.
-- `description` (required): ≤1024 chars, **no angle brackets** (`<` or `>`).
-- `compatibility` (optional): string ≤500 chars.
-- `license` (convention): `Complete terms in LICENSE.txt` (or `Proprietary. LICENSE.txt has complete terms`).
+Frontmatter is YAML between `---` markers. Only six keys are allowed — `name`, `description`,
+`license`, `allowed-tools`, `metadata`, `compatibility` — where `name` is kebab-case and **must
+equal the folder name**, and `description` is ≤1024 chars with **no angle brackets** (`<` or `>`).
+The detailed point-of-edit checklist (per-field limits, quoting values that contain a colon, the
+`license` convention) lives in
+[skill-authoring.instructions.md](.github/instructions/skill-authoring.instructions.md), which is
+auto-attached whenever you edit a `SKILL.md`.
 
 ## The `description` field is the trigger surface
 
-An agent decides whether to load a skill from its `description` alone, so put every "when to use"
-signal there. Follow the house style: state the capability, then `Use when…` with concrete triggers
-(keywords, file extensions, scenarios), then `Do NOT use for…` exclusions.
-[github-repo-setup](.github/skills/github-repo-setup/SKILL.md) is the model in this repo — its
-`description` does exactly this.
+An agent decides whether to load a skill from its `description` alone, so pack every "when to use"
+signal in — capability first, then `Use when…` triggers, then `Do NOT use for…` exclusions.
+[github-repo-setup](.github/skills/github-repo-setup/SKILL.md) is the model to copy; the full house
+style is in
+[skill-authoring.instructions.md](.github/instructions/skill-authoring.instructions.md).
 
 ## Validating and packaging a skill
 
@@ -74,12 +74,14 @@ checkout. The hook fails open when it's absent (so a `SKILL.md` edit is never bl
 
 ## Helper prompts
 
-Three repo prompts (in [.github/prompts/](.github/prompts/)) speed up skill work:
+Four repo prompts (in [.github/prompts/](.github/prompts/)) speed up skill work:
 
 - `/create-skill` — scaffold a new `.github/skills/<name>/` (SKILL.md + `LICENSE.txt`) that follows
   the rules above.
 - `/review-skill` — audit an existing `SKILL.md` against those rules and report fixes (read-only).
-- `/run-skill-evals` — run a skill's `*-workspace/` A/B eval harness and grade it with `grade.py`
+- `/create-eval` — scaffold a skill's `*-workspace/` A/B eval harness (`evals/evals.json` +
+  `grade.py`) by mirroring an existing one.
+- `/run-skill-evals` — run that harness in both configurations and grade it with `grade.py`
   (see [.github/instructions/eval-harness.instructions.md](.github/instructions/eval-harness.instructions.md)).
 
 ## Conventions and gotchas
@@ -87,7 +89,8 @@ Three repo prompts (in [.github/prompts/](.github/prompts/)) speed up skill work
 - Keep `SKILL.md` under ~500 lines. Push long detail into `references/` and link to it from
   `SKILL.md` (progressive disclosure).
 - Every skill ships its own `LICENSE.txt`; keep it when adding or copying a skill.
-- A skill can carry an evaluation workspace at `<name>-workspace/` (see
-  [github-repo-setup-workspace/](.github/skills/github-repo-setup-workspace/)); running and grading
+- A skill can carry an evaluation workspace at `<name>-workspace/` — both skills here do
+  ([github-repo-setup-workspace/](.github/skills/github-repo-setup-workspace/),
+  [readme-authoring-workspace/](.github/skills/readme-authoring-workspace/)). Running and grading
   those evals is covered in
   [.github/instructions/eval-harness.instructions.md](.github/instructions/eval-harness.instructions.md).

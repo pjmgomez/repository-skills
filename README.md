@@ -11,10 +11,33 @@ This repo is a skills library, not an application: there is nothing to build or 
 | Skill | What it does |
 |-------|--------------|
 | [github-repo-setup](.github/skills/github-repo-setup/SKILL.md) | Scaffold and audit a repo's folder structure and community-health files. |
+| [readme-authoring](.github/skills/readme-authoring/SKILL.md) | Author or improve a repository's README so it works as a clear landing page. |
 
-A skill can ship an evaluation harness beside it; see
-[github-repo-setup-workspace/](.github/skills/github-repo-setup-workspace/) and its
+Each skill can ship an evaluation harness beside it in a `<name>-workspace/` folder — both here do
+([github-repo-setup-workspace/](.github/skills/github-repo-setup-workspace/),
+[readme-authoring-workspace/](.github/skills/readme-authoring-workspace/)); see the
 [eval-harness instructions](.github/instructions/eval-harness.instructions.md).
+
+## Getting started
+
+You don't install these skills directly — an AI coding agent loads one automatically when a request
+matches its `description`. Asking an agent to "set up my repo" pulls in
+[github-repo-setup](.github/skills/github-repo-setup/SKILL.md); "write me a README" pulls in
+[readme-authoring](.github/skills/readme-authoring/SKILL.md). To use a skill in another project,
+package it (see [Developing skills](#developing-skills)) and place the resulting `.skill` where your
+agent discovers skills.
+
+## Usage
+
+Work on the skills through the repo's slash-command prompts (in [.github/prompts/](.github/prompts/)):
+
+- `/create-skill` — scaffold a new skill folder (`SKILL.md` + `LICENSE.txt`).
+- `/review-skill` — audit an existing `SKILL.md` against the conventions (read-only).
+- `/create-eval` — scaffold a skill's `<name>-workspace/` A/B evaluation harness.
+- `/run-skill-evals` — run and grade that harness.
+
+For example, `/create-skill pdf-export: turn a Markdown file into a PDF` produces a
+conventions-compliant starting point you then flesh out.
 
 ## Anatomy of a skill
 
@@ -51,3 +74,15 @@ and the `PostToolUse` hook both fail open when it's absent — CI skips validati
 only work when `.github/skills/skill-creator/` is present. When it's missing, check frontmatter by hand
 against [skill-authoring.instructions.md](.github/instructions/skill-authoring.instructions.md), or run
 the `/review-skill` prompt.
+
+## Contributing
+
+Conventions live in [AGENTS.md](AGENTS.md), with the point-of-edit checklist in
+[skill-authoring.instructions.md](.github/instructions/skill-authoring.instructions.md). Keep each
+change scoped to one skill folder, validate before committing, and use `/review-skill` to self-check;
+CI ([.github/workflows/validate-skills.yml](.github/workflows/validate-skills.yml)) runs the validator
+on every push and pull request.
+
+## License
+
+[Apache License 2.0](LICENSE). Each skill also ships its own `LICENSE.txt`.

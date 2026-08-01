@@ -1,0 +1,55 @@
+{
+  "expectations": [
+    {
+      "text": "README.md exists at the repository root",
+      "passed": true,
+      "evidence": "found README.md at root"
+    },
+    {
+      "text": "The README has exactly one top-level '# ' title heading",
+      "passed": true,
+      "evidence": "1 top-level '#' heading(s)"
+    },
+    {
+      "text": "The README describes what the project does near the top (summary paragraph or a what/overview section)",
+      "passed": true,
+      "evidence": "has a summary/what-it-does up top"
+    },
+    {
+      "text": "The README includes an installation or getting-started section",
+      "passed": true,
+      "evidence": "has an install/getting-started section"
+    },
+    {
+      "text": "The README includes a usage or examples section",
+      "passed": true,
+      "evidence": "has a usage/examples section"
+    },
+    {
+      "text": "The README shows a usage example in a fenced code block",
+      "passed": true,
+      "evidence": "has a fenced code block"
+    },
+    {
+      "text": "The README mentions the project name 'tinytoml'",
+      "passed": true,
+      "evidence": "mentions 'tinytoml'"
+    },
+    {
+      "text": "The README uses at least three '## ' section headings (so GitHub's auto table of contents is useful)",
+      "passed": true,
+      "evidence": "6 '##' section headings"
+    },
+    {
+      "text": "Any in-repo links use relative paths (no absolute github.com blob/tree/raw self-links)",
+      "passed": true,
+      "evidence": "no absolute in-repo links"
+    }
+  ],
+  "summary": {
+    "passed": 9,
+    "failed": 0,
+    "total": 9,
+    "pass_rate": 1.0
+  }
+}

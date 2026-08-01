@@ -1,0 +1,16 @@
+{
+  "eval_id": 0,
+  "eval_name": "author-readme-from-scratch",
+  "prompt": "I just built a small Python library called tinytoml \u2014 it parses TOML text into a dict and serializes a dict back to TOML. The code is in the repo I gave you (tinytoml.py). There's no README yet. Can you write me a proper README for it?",
+  "assertions": [
+    "README.md exists at the repository root",
+    "The README has exactly one top-level '# ' title heading",
+    "The README describes what the project does near the top (summary paragraph or a what/overview section)",
+    "The README includes an installation or getting-started section",
+    "The README includes a usage or examples section",
+    "The README shows a usage example in a fenced code block",
+    "The README mentions the project name 'tinytoml'",
+    "The README uses at least three '## ' section headings (so GitHub's auto table of contents is useful)",
+    "Any in-repo links use relative paths (no absolute github.com blob/tree/raw self-links)"
+  ]
+}

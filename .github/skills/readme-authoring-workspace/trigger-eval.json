@@ -1,0 +1,22 @@
+[
+  {"query": "my python package flowmeter has a readme thats basically just the title and a one-line blurb. can you flesh it out into a real one with install and usage sections?", "should_trigger": true},
+  {"query": "I'm open-sourcing a small Go module that parses iCal feeds. there's no README yet — write one that says what it does and how to install and use it.", "should_trigger": true},
+  {"query": "the front page of my repo looks awful on github — it's one giant wall of text and the Outline sidebar is empty. help me fix how it's structured.", "should_trigger": true},
+  {"query": "add a table of contents to my README.md and make the section headings link to each other properly", "should_trigger": true},
+  {"query": "what sections do people expect in a readme for a CLI tool called dedupe? I want to write a good one.", "should_trigger": true},
+  {"query": "my readme links to files with urls like https://github.com/me/proj/blob/main/docs/setup.md and they break when someone clones the repo. can you fix those links?", "should_trigger": true},
+  {"query": "i want the thing that shows up on my github profile page to actually describe what i work on, right now it's totally blank", "should_trigger": true},
+  {"query": "rewrite my project's readme so a newcomer can actually get started — it assumes way too much and there's no example of it running", "should_trigger": true},
+  {"query": "we're about to flip our repo to public on monday. polish the README so it clearly explains what the service does and how to run it locally.", "should_trigger": true},
+  {"query": "should my readme live in the repo root or in a docs folder, and how do I make sure github actually surfaces it?", "should_trigger": true},
+  {"query": "set up my empty repo with the standard folders plus a CONTRIBUTING, a SECURITY policy, and a .gitignore", "should_trigger": false},
+  {"query": "scaffold a new repository layout for a node project — src, test, docs, tools and the issue and PR templates", "should_trigger": false},
+  {"query": "write the full API reference docs for my library — every public function, its parameters and return values", "should_trigger": false},
+  {"query": "convert this markdown file notes.md in my downloads into a nicely formatted PDF for sharing", "should_trigger": false},
+  {"query": "my CONTRIBUTING.md is out of date, can you rewrite the contribution guidelines and the PR checklist?", "should_trigger": false},
+  {"query": "create a new react app with vite and typescript and get the project scaffolding set up", "should_trigger": false},
+  {"query": "add a github actions workflow that runs my pytest suite on every push to main", "should_trigger": false},
+  {"query": "reformat this messy JSON config file and fix all the indentation", "should_trigger": false},
+  {"query": "set up a wiki page documenting our production deployment runbook step by step", "should_trigger": false},
+  {"query": "help me choose an open source license for my project — should I go MIT or Apache 2.0?", "should_trigger": false}
+]

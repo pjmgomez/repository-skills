@@ -1,0 +1,45 @@
+{
+  "expectations": [
+    {
+      "text": "The rewritten README preserves the project name 'lumen'",
+      "passed": true,
+      "evidence": "mentions 'lumen'"
+    },
+    {
+      "text": "The rewritten README has exactly one top-level '# ' title heading",
+      "passed": true,
+      "evidence": "1 top-level '#' heading(s)"
+    },
+    {
+      "text": "The rewritten README adds at least three standard sections (what/overview, install, usage, contributing, license) as '##' headings",
+      "passed": true,
+      "evidence": "3 standard sections present"
+    },
+    {
+      "text": "The rewritten README has no skipped heading levels",
+      "passed": true,
+      "evidence": "no skipped heading levels"
+    },
+    {
+      "text": "The rewritten README includes a usage example in a fenced code block",
+      "passed": false,
+      "evidence": "no fenced code block"
+    },
+    {
+      "text": "In-repo links are relative (the original absolute github.com link to CONTRIBUTING was relativized)",
+      "passed": false,
+      "evidence": "absolute github.com in-repo link remains"
+    },
+    {
+      "text": "The rewritten README preserves real project facts (mentions Node and at least one feature such as levels, colors, or json)",
+      "passed": true,
+      "evidence": "preserves Node + a feature"
+    }
+  ],
+  "summary": {
+    "passed": 5,
+    "failed": 2,
+    "total": 7,
+    "pass_rate": 0.7143
+  }
+}
