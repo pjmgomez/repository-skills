@@ -1,0 +1,47 @@
+{
+  "skill_name": "github-repo-setup",
+  "evals": [
+    {
+      "id": 0,
+      "prompt": "I just created an empty folder for a new open-source Python CLI tool called packmule. Can you set it up with the standard repository structure and the usual GitHub files (readme, contributing, a security policy, issue and PR templates, and a gitignore)? The folder is the repository at the path I gave you.",
+      "expected_output": "A scaffolded repo: src/, test/, docs/, tools/ folders and README.md, CONTRIBUTING.md, SECURITY.md, .github/PULL_REQUEST_TEMPLATE.md, .github/ISSUE_TEMPLATE/*.md, .gitignore. README/CONTRIBUTING reference the project name 'packmule'.",
+      "files": [],
+      "expectations": [
+        "README.md exists at the repository root",
+        "CONTRIBUTING.md exists (root, docs/, or .github/)",
+        "SECURITY.md exists (root, docs/, or .github/)",
+        "A pull request template exists at .github/PULL_REQUEST_TEMPLATE.md",
+        "At least one issue template exists under .github/ISSUE_TEMPLATE/",
+        "A .gitignore file exists at the repository root",
+        "The src/ and test/ folders exist",
+        "The generated README or CONTRIBUTING mentions the project name 'packmule'"
+      ]
+    },
+    {
+      "id": 1,
+      "prompt": "Here's my repository at the path I gave you. Right now it only has a README and a src folder. Can you check whether it follows GitHub repo best practices and tell me exactly what's missing? Please don't change anything yet, just report.",
+      "expected_output": "A read-only audit summary that identifies the missing items (CONTRIBUTING, SECURITY, PR template, issue templates, .gitignore, test/, docs/, tools/) and notes that README and src/ are already present. No files are created or modified.",
+      "files": [],
+      "expectations": [
+        "The response reports that CONTRIBUTING is missing",
+        "The response reports that SECURITY is missing",
+        "The response reports that the .gitignore is missing",
+        "The response reports that issue and/or pull request templates are missing",
+        "The response acknowledges that README and src/ are already present",
+        "No new files or folders were written to the repository (audit stayed read-only)"
+      ]
+    },
+    {
+      "id": 2,
+      "prompt": "My repository at the path I gave you doesn't have a security policy and I keep getting reports opened as public issues. Can you add a SECURITY.md that tells people how to report vulnerabilities privately? Leave the rest of my files alone.",
+      "expected_output": "A SECURITY.md added at the repository root (or .github/) that explains private vulnerability reporting and includes a 'Reporting a vulnerability' section. Existing files are untouched.",
+      "files": [],
+      "expectations": [
+        "A SECURITY.md file exists after the run (root or .github/)",
+        "SECURITY.md describes reporting vulnerabilities privately rather than via public issues",
+        "SECURITY.md contains a section about how to report a vulnerability",
+        "The pre-existing README.md content was not modified"
+      ]
+    }
+  ]
+}

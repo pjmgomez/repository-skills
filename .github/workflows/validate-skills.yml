@@ -1,0 +1,44 @@
+name: Validate skills
+
+on:
+  push:
+    paths:
+      - '.github/skills/**'
+      - '.github/workflows/validate-skills.yml'
+  pull_request:
+    paths:
+      - '.github/skills/**'
+      - '.github/workflows/validate-skills.yml'
+  workflow_dispatch:
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.x'
+      - name: Install dependencies
+        run: pip install pyyaml
+      - name: Validate all skills
+        run: |
+          validator=".github/skills/skill-creator/scripts/quick_validate.py"
+          # Fail open when the validator is absent: skill-creator isn't part of every checkout.
+          if [ ! -f "$validator" ]; then
+            echo "::notice::$validator is not present in this checkout; skipping skill validation."
+            exit 0
+          fi
+          failed=0
+          for skill in .github/skills/*/; do
+            [ -f "${skill}SKILL.md" ] || continue
+            echo "::group::${skill}"
+            if ! python3 "$validator" "$skill"; then
+              failed=1
+            fi
+            echo "::endgroup::"
+          done
+          if [ "$failed" -ne 0 ]; then
+            echo "::error::One or more skills failed validation"
+            exit 1
+          fi

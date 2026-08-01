@@ -1,0 +1,13 @@
+{
+  "eval_id": 1,
+  "eval_name": "audit-existing-repo",
+  "prompt": "Here's my repository. Right now it only has a README and a src folder. Can you check whether it follows GitHub repo best practices and tell me exactly what's missing? Please don't change anything yet, just report.",
+  "assertions": [
+    "The response reports that CONTRIBUTING is missing",
+    "The response reports that SECURITY is missing",
+    "The response reports that the .gitignore is missing",
+    "The response reports that issue and/or pull request templates are missing",
+    "The response acknowledges that README and src/ are already present",
+    "No new files or folders were written to the repository (audit stayed read-only)"
+  ]
+}

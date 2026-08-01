@@ -1,0 +1,15 @@
+{
+  "eval_id": 0,
+  "eval_name": "scaffold-new-repo",
+  "prompt": "I just created an empty folder for a new open-source Python CLI tool called packmule. Can you set it up with the standard repository structure and the usual GitHub files (readme, contributing, a security policy, issue and PR templates, and a gitignore)?",
+  "assertions": [
+    "README.md exists at the repository root",
+    "CONTRIBUTING.md exists (root, docs/, or .github/)",
+    "SECURITY.md exists (root, docs/, or .github/)",
+    "A pull request template exists at .github/PULL_REQUEST_TEMPLATE.md",
+    "At least one issue template exists under .github/ISSUE_TEMPLATE/",
+    "A .gitignore file exists at the repository root",
+    "The src/ and test/ folders exist",
+    "The generated README or CONTRIBUTING mentions the project name 'packmule'"
+  ]
+}

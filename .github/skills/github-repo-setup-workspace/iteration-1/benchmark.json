@@ -1,0 +1,345 @@
+{
+  "metadata": {
+    "skill_name": "github-repo-setup",
+    "evals_run": [
+      0,
+      1,
+      2
+    ],
+    "runs_per_configuration": 1
+  },
+  "runs": [
+    {
+      "eval_id": 0,
+      "eval_name": "scaffold-new-repo",
+      "configuration": "with_skill",
+      "run_number": 1,
+      "result": {
+        "pass_rate": 1.0,
+        "passed": 8,
+        "failed": 0,
+        "total": 8,
+        "time_seconds": 0,
+        "tokens": 0,
+        "tool_calls": 0,
+        "errors": 0
+      },
+      "expectations": [
+        {
+          "text": "README.md exists at the repository root",
+          "passed": true,
+          "evidence": "found README.md"
+        },
+        {
+          "text": "CONTRIBUTING.md exists (root, docs/, or .github/)",
+          "passed": true,
+          "evidence": "found CONTRIBUTING.md"
+        },
+        {
+          "text": "SECURITY.md exists (root, docs/, or .github/)",
+          "passed": true,
+          "evidence": "found SECURITY.md"
+        },
+        {
+          "text": "A pull request template exists at .github/PULL_REQUEST_TEMPLATE.md",
+          "passed": true,
+          "evidence": "found .github/PULL_REQUEST_TEMPLATE.md"
+        },
+        {
+          "text": "At least one issue template exists under .github/ISSUE_TEMPLATE/",
+          "passed": true,
+          "evidence": "issue templates: ['bug_report.md', 'feature_request.md']"
+        },
+        {
+          "text": "A .gitignore file exists at the repository root",
+          "passed": true,
+          "evidence": "found .gitignore"
+        },
+        {
+          "text": "The src/ and test/ folders exist",
+          "passed": true,
+          "evidence": "src/=True, test/=True (test-like dirs present: ['test'])"
+        },
+        {
+          "text": "The generated README or CONTRIBUTING mentions the project name 'packmule'",
+          "passed": true,
+          "evidence": "'packmule' present in README/CONTRIBUTING"
+        }
+      ]
+    },
+    {
+      "eval_id": 0,
+      "eval_name": "scaffold-new-repo",
+      "configuration": "without_skill",
+      "run_number": 1,
+      "result": {
+        "pass_rate": 0.875,
+        "passed": 7,
+        "failed": 1,
+        "total": 8,
+        "time_seconds": 0,
+        "tokens": 0,
+        "tool_calls": 0,
+        "errors": 0
+      },
+      "expectations": [
+        {
+          "text": "README.md exists at the repository root",
+          "passed": true,
+          "evidence": "found README.md"
+        },
+        {
+          "text": "CONTRIBUTING.md exists (root, docs/, or .github/)",
+          "passed": true,
+          "evidence": "found CONTRIBUTING.md"
+        },
+        {
+          "text": "SECURITY.md exists (root, docs/, or .github/)",
+          "passed": true,
+          "evidence": "found SECURITY.md"
+        },
+        {
+          "text": "A pull request template exists at .github/PULL_REQUEST_TEMPLATE.md",
+          "passed": true,
+          "evidence": "found .github/PULL_REQUEST_TEMPLATE.md"
+        },
+        {
+          "text": "At least one issue template exists under .github/ISSUE_TEMPLATE/",
+          "passed": true,
+          "evidence": "issue templates: ['bug_report.md', 'config.yml', 'feature_request.md']"
+        },
+        {
+          "text": "A .gitignore file exists at the repository root",
+          "passed": true,
+          "evidence": "found .gitignore"
+        },
+        {
+          "text": "The src/ and test/ folders exist",
+          "passed": false,
+          "evidence": "src/=True, test/=False (test-like dirs present: ['tests'])"
+        },
+        {
+          "text": "The generated README or CONTRIBUTING mentions the project name 'packmule'",
+          "passed": true,
+          "evidence": "'packmule' present in README/CONTRIBUTING"
+        }
+      ]
+    },
+    {
+      "eval_id": 1,
+      "eval_name": "audit-existing-repo",
+      "configuration": "with_skill",
+      "run_number": 1,
+      "result": {
+        "pass_rate": 1.0,
+        "passed": 6,
+        "failed": 0,
+        "total": 6,
+        "time_seconds": 0,
+        "tokens": 0,
+        "tool_calls": 0,
+        "errors": 0
+      },
+      "expectations": [
+        {
+          "text": "The response reports that CONTRIBUTING is missing",
+          "passed": true,
+          "evidence": "report mentions CONTRIBUTING"
+        },
+        {
+          "text": "The response reports that SECURITY is missing",
+          "passed": true,
+          "evidence": "report mentions SECURITY"
+        },
+        {
+          "text": "The response reports that the .gitignore is missing",
+          "passed": true,
+          "evidence": "report mentions .gitignore"
+        },
+        {
+          "text": "The response reports that issue and/or pull request templates are missing",
+          "passed": true,
+          "evidence": "report mentions templates"
+        },
+        {
+          "text": "The response acknowledges that README and src/ are already present",
+          "passed": true,
+          "evidence": "report acknowledges README and src as present"
+        },
+        {
+          "text": "No new files or folders were written to the repository (audit stayed read-only)",
+          "passed": true,
+          "evidence": "repo unchanged (only README.md + src/parser.py)"
+        }
+      ]
+    },
+    {
+      "eval_id": 1,
+      "eval_name": "audit-existing-repo",
+      "configuration": "without_skill",
+      "run_number": 1,
+      "result": {
+        "pass_rate": 1.0,
+        "passed": 6,
+        "failed": 0,
+        "total": 6,
+        "time_seconds": 0,
+        "tokens": 0,
+        "tool_calls": 0,
+        "errors": 0
+      },
+      "expectations": [
+        {
+          "text": "The response reports that CONTRIBUTING is missing",
+          "passed": true,
+          "evidence": "report mentions CONTRIBUTING"
+        },
+        {
+          "text": "The response reports that SECURITY is missing",
+          "passed": true,
+          "evidence": "report mentions SECURITY"
+        },
+        {
+          "text": "The response reports that the .gitignore is missing",
+          "passed": true,
+          "evidence": "report mentions .gitignore"
+        },
+        {
+          "text": "The response reports that issue and/or pull request templates are missing",
+          "passed": true,
+          "evidence": "report mentions templates"
+        },
+        {
+          "text": "The response acknowledges that README and src/ are already present",
+          "passed": true,
+          "evidence": "report acknowledges README and src as present"
+        },
+        {
+          "text": "No new files or folders were written to the repository (audit stayed read-only)",
+          "passed": true,
+          "evidence": "repo unchanged (only README.md + src/parser.py)"
+        }
+      ]
+    },
+    {
+      "eval_id": 2,
+      "eval_name": "add-security",
+      "configuration": "with_skill",
+      "run_number": 1,
+      "result": {
+        "pass_rate": 1.0,
+        "passed": 4,
+        "failed": 0,
+        "total": 4,
+        "time_seconds": 0,
+        "tokens": 0,
+        "tool_calls": 0,
+        "errors": 0
+      },
+      "expectations": [
+        {
+          "text": "A SECURITY.md file exists after the run (root or .github/)",
+          "passed": true,
+          "evidence": "found SECURITY.md"
+        },
+        {
+          "text": "SECURITY.md describes reporting vulnerabilities privately rather than via public issues",
+          "passed": true,
+          "evidence": "mentions private reporting and public issues"
+        },
+        {
+          "text": "SECURITY.md contains a section about how to report a vulnerability",
+          "passed": true,
+          "evidence": "has a 'Reporting a vulnerability' style heading"
+        },
+        {
+          "text": "The pre-existing README.md content was not modified",
+          "passed": true,
+          "evidence": "README.md byte-identical to seed"
+        }
+      ]
+    },
+    {
+      "eval_id": 2,
+      "eval_name": "add-security",
+      "configuration": "without_skill",
+      "run_number": 1,
+      "result": {
+        "pass_rate": 1.0,
+        "passed": 4,
+        "failed": 0,
+        "total": 4,
+        "time_seconds": 0,
+        "tokens": 0,
+        "tool_calls": 0,
+        "errors": 0
+      },
+      "expectations": [
+        {
+          "text": "A SECURITY.md file exists after the run (root or .github/)",
+          "passed": true,
+          "evidence": "found SECURITY.md"
+        },
+        {
+          "text": "SECURITY.md describes reporting vulnerabilities privately rather than via public issues",
+          "passed": true,
+          "evidence": "mentions private reporting and public issues"
+        },
+        {
+          "text": "SECURITY.md contains a section about how to report a vulnerability",
+          "passed": true,
+          "evidence": "has a 'Reporting a vulnerability' style heading"
+        },
+        {
+          "text": "The pre-existing README.md content was not modified",
+          "passed": true,
+          "evidence": "README.md byte-identical to seed"
+        }
+      ]
+    }
+  ],
+  "run_summary": {
+    "with_skill": {
+      "pass_rate": {
+        "mean": 1.0,
+        "stddev": 0.0,
+        "min": 1.0,
+        "max": 1.0
+      },
+      "time_seconds": {
+        "mean": 0,
+        "stddev": 0
+      },
+      "tokens": {
+        "mean": 0,
+        "stddev": 0
+      }
+    },
+    "without_skill": {
+      "pass_rate": {
+        "mean": 0.9583,
+        "stddev": 0.0722,
+        "min": 0.875,
+        "max": 1.0
+      },
+      "time_seconds": {
+        "mean": 0,
+        "stddev": 0
+      },
+      "tokens": {
+        "mean": 0,
+        "stddev": 0
+      }
+    },
+    "delta": {
+      "pass_rate": "+0.04",
+      "time_seconds": "n/a",
+      "tokens": "n/a"
+    }
+  },
+  "notes": [
+    "Grading is deterministic and file-based; see each run's grading.json for per-assertion evidence.",
+    "Timing and token metrics were not captured in this environment, so time/token columns read 0.",
+    "Eval 0 assertion 'src/ and test/ folders exist' is a convention check: the skill emits test/ (per the recommended layout) while a from-scratch baseline chose the equally valid tests/, so this assertion is expected to discriminate on naming, not correctness."
+  ]
+}

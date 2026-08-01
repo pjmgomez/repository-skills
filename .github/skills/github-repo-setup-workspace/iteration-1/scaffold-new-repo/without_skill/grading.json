@@ -1,0 +1,50 @@
+{
+  "expectations": [
+    {
+      "text": "README.md exists at the repository root",
+      "passed": true,
+      "evidence": "found README.md"
+    },
+    {
+      "text": "CONTRIBUTING.md exists (root, docs/, or .github/)",
+      "passed": true,
+      "evidence": "found CONTRIBUTING.md"
+    },
+    {
+      "text": "SECURITY.md exists (root, docs/, or .github/)",
+      "passed": true,
+      "evidence": "found SECURITY.md"
+    },
+    {
+      "text": "A pull request template exists at .github/PULL_REQUEST_TEMPLATE.md",
+      "passed": true,
+      "evidence": "found .github/PULL_REQUEST_TEMPLATE.md"
+    },
+    {
+      "text": "At least one issue template exists under .github/ISSUE_TEMPLATE/",
+      "passed": true,
+      "evidence": "issue templates: ['bug_report.md', 'config.yml', 'feature_request.md']"
+    },
+    {
+      "text": "A .gitignore file exists at the repository root",
+      "passed": true,
+      "evidence": "found .gitignore"
+    },
+    {
+      "text": "The src/ and test/ folders exist",
+      "passed": false,
+      "evidence": "src/=True, test/=False (test-like dirs present: ['tests'])"
+    },
+    {
+      "text": "The generated README or CONTRIBUTING mentions the project name 'packmule'",
+      "passed": true,
+      "evidence": "'packmule' present in README/CONTRIBUTING"
+    }
+  ],
+  "summary": {
+    "passed": 7,
+    "failed": 1,
+    "total": 8,
+    "pass_rate": 0.875
+  }
+}

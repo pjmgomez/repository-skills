@@ -1,0 +1,40 @@
+{
+  "expectations": [
+    {
+      "text": "The response reports that CONTRIBUTING is missing",
+      "passed": true,
+      "evidence": "report mentions CONTRIBUTING"
+    },
+    {
+      "text": "The response reports that SECURITY is missing",
+      "passed": true,
+      "evidence": "report mentions SECURITY"
+    },
+    {
+      "text": "The response reports that the .gitignore is missing",
+      "passed": true,
+      "evidence": "report mentions .gitignore"
+    },
+    {
+      "text": "The response reports that issue and/or pull request templates are missing",
+      "passed": true,
+      "evidence": "report mentions templates"
+    },
+    {
+      "text": "The response acknowledges that README and src/ are already present",
+      "passed": true,
+      "evidence": "report acknowledges README and src as present"
+    },
+    {
+      "text": "No new files or folders were written to the repository (audit stayed read-only)",
+      "passed": true,
+      "evidence": "repo unchanged (only README.md + src/parser.py)"
+    }
+  ],
+  "summary": {
+    "passed": 6,
+    "failed": 0,
+    "total": 6,
+    "pass_rate": 1.0
+  }
+}

@@ -1,0 +1,11 @@
+{
+  "hooks": {
+    "PostToolUse": [
+      {
+        "type": "command",
+        "command": "bash .github/hooks/validate-skill.sh",
+        "timeout": 30
+      }
+    ]
+  }
+}
