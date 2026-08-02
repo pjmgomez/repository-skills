@@ -1,7 +1,10 @@
 # Repository Skills
 
-A curated collection of self-contained **agent skills** — reusable capabilities that any AI coding
-agent supporting the `SKILL.md` convention can load to carry out a specialized task.
+[![Validate skills](https://github.com/pjmgomez/repository-skills/actions/workflows/validate-skills.yml/badge.svg)](https://github.com/pjmgomez/repository-skills/actions/workflows/validate-skills.yml)
+[![License: Apache 2.0](https://img.shields.io/badge/License-Apache%202.0-blue.svg)](LICENSE)
+
+A curated collection of self-contained **agent skills**. Each skill is a reusable capability that any
+AI coding agent supporting the `SKILL.md` convention can load to carry out a specialized task.
 
 ## What it does
 
@@ -57,6 +60,14 @@ You do not run these skills directly; an agent loads them for you. When you give
 scans each skill's frontmatter `description` and, if one matches, reads that skill's `SKILL.md` and
 follows its instructions.
 
+```mermaid
+flowchart LR
+    A["You give the agent a task"] --> B{"Scan each skill's description"}
+    B -- matches --> C["Read that skill's SKILL.md"]
+    B -- no match --> D["Proceed without a skill"]
+    C --> E["Follow the skill's instructions"]
+```
+
 For example, asking an agent to "write a README for this project" matches the
 [readme-authoring](.github/skills/readme-authoring/SKILL.md) skill, whose description triggers on
 exactly that request. To see what a skill does and when it activates, open its `SKILL.md` and read the
@@ -79,8 +90,10 @@ GitHub page.
 
 ## Maintainers
 
-Maintained by the Repository Skills contributors. The best way to reach them is through the issues and
-discussions linked above.
+Maintained by [@pjmgomez](https://github.com/pjmgomez) together with the project's
+[contributors](https://github.com/pjmgomez/repository-skills/graphs/contributors). The best way to
+reach the maintainers is by [opening an issue](https://github.com/pjmgomez/repository-skills/issues)
+or [starting a discussion](https://github.com/pjmgomez/repository-skills/discussions).
 
 ## License
 
