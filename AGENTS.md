@@ -72,9 +72,9 @@ checkout. The hook fails open when it's absent (so a `SKILL.md` edit is never bl
 [skill-authoring.instructions.md](.github/instructions/skill-authoring.instructions.md), or run the
 `/review-skill` prompt.
 
-## Helper prompts
+## Helper prompts and agents
 
-Four repo prompts (in [.github/prompts/](.github/prompts/)) speed up skill work:
+Five repo prompts (in [.github/prompts/](.github/prompts/)) speed up skill work:
 
 - `/create-skill` — scaffold a new `.github/skills/<name>/` (SKILL.md + `LICENSE.txt`) that follows
   the rules above.
@@ -83,12 +83,23 @@ Four repo prompts (in [.github/prompts/](.github/prompts/)) speed up skill work:
   `grade.py`) by mirroring an existing one.
 - `/run-skill-evals` — run that harness in both configurations and grade it with `grade.py`
   (see [.github/instructions/eval-harness.instructions.md](.github/instructions/eval-harness.instructions.md)).
+- `/package-skill` — package a skill into a distributable `<name>.skill` archive with
+  [package_skill.py](.github/skills/skill-creator/scripts/package_skill.py) (validates first; needs
+  the `skill-creator/` skill present).
+
+For a whole new skill in one pass, the **Skill Author** agent
+([.github/agents/skill-author.agent.md](.github/agents/skill-author.agent.md)) chains these steps —
+scaffold, validate, then optionally add and run evals. When editing a prompt itself, follow
+[prompt-authoring.instructions.md](.github/instructions/prompt-authoring.instructions.md), which
+auto-attaches under `.github/prompts/`.
 
 ## Conventions and gotchas
 
 - Keep `SKILL.md` under ~500 lines. Push long detail into `references/` and link to it from
-  `SKILL.md` (progressive disclosure).
-- Every skill ships its own `LICENSE.txt`; keep it when adding or copying a skill.
+  `SKILL.md` (progressive disclosure); when writing those docs, follow
+  [references-authoring.instructions.md](.github/instructions/references-authoring.instructions.md).
+- Every skill ships its own `LICENSE.txt`; keep it when adding or copying a skill (point-of-edit
+  guidance: [skill-license.instructions.md](.github/instructions/skill-license.instructions.md)).
 - A skill can carry an evaluation workspace at `<name>-workspace/` — both skills here do
   ([github-repo-setup-workspace/](.github/skills/github-repo-setup-workspace/),
   [readme-authoring-workspace/](.github/skills/readme-authoring-workspace/)). Running and grading
