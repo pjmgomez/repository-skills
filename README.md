@@ -1,88 +1,87 @@
-# repository-skills
+# Repository Skills
 
-A curated collection of **agent skills** — reusable capabilities for Claude/Copilot coding agents.
-Each skill is self-contained under [.github/skills/](.github/skills/) and is loaded on demand when
-its `description` matches the task at hand.
+A curated collection of self-contained **agent skills** — reusable capabilities that any AI coding
+agent supporting the `SKILL.md` convention can load to carry out a specialized task.
 
-This repo is a skills library, not an application: there is nothing to build or run.
+## What it does
 
-## Skills
+Each skill lives in its own folder under [.github/skills/](.github/skills) and is a single
+`SKILL.md` — YAML frontmatter plus Markdown instructions — optionally accompanied by helper scripts,
+on-demand references, and assets:
+
+```
+.github/skills/<name>/
+├── SKILL.md        # required: YAML frontmatter + Markdown instructions
+├── LICENSE.txt     # required: per-skill license
+├── scripts/        # optional: executable helpers
+├── references/     # optional: docs loaded on demand
+└── assets/         # optional: templates and other files used in output
+```
+
+An agent reads the frontmatter `description` of every available skill and loads one only when that
+description matches the task at hand. Because each skill is self-contained, it can be used here or
+copied into another repository unchanged. See [AGENTS.md](AGENTS.md) for the full anatomy, conventions,
+and authoring rules.
+
+## Available skills
 
 | Skill | What it does |
-|-------|--------------|
-| [github-repo-setup](.github/skills/github-repo-setup/SKILL.md) | Scaffold and audit a repo's folder structure and community-health files. |
-| [readme-authoring](.github/skills/readme-authoring/SKILL.md) | Author or improve a repository's README so it works as a clear landing page. |
+| --- | --- |
+| [github-repo-setup](.github/skills/github-repo-setup/SKILL.md) | Scaffold and audit a repository's folder structure and community-health files (README, CONTRIBUTING, SECURITY, issue and PR templates, `.gitignore`). |
+| [readme-authoring](.github/skills/readme-authoring/SKILL.md) | Author or improve a repository's README so it clearly explains what a project does, why it is useful, and how to use it. |
 
-Each skill can ship an evaluation harness beside it in a `<name>-workspace/` folder — both here do
-([github-repo-setup-workspace/](.github/skills/github-repo-setup-workspace/),
-[readme-authoring-workspace/](.github/skills/readme-authoring-workspace/)); see the
-[eval-harness instructions](.github/instructions/eval-harness.instructions.md).
+Each skill ships with its own evaluation workspace (`<name>-workspace/`) that A/B-tests it with and
+without the skill applied.
 
 ## Getting started
 
-You don't install these skills directly — an AI coding agent loads one automatically when a request
-matches its `description`. Asking an agent to "set up my repo" pulls in
-[github-repo-setup](.github/skills/github-repo-setup/SKILL.md); "write me a README" pulls in
-[readme-authoring](.github/skills/readme-authoring/SKILL.md). To use a skill in another project,
-package it (see [Developing skills](#developing-skills)) and place the resulting `.skill` where your
-agent discovers skills.
+### Prerequisites
+
+- An AI coding agent that supports the `SKILL.md` skill convention.
+- [git](https://git-scm.com/) to clone the repository.
+
+### Get the skills
+
+Clone the repository so your agent can discover the skills under [.github/skills/](.github/skills):
+
+```
+git clone https://github.com/pjmgomez/repository-skills.git
+```
+
+To use a single skill in another project, copy its folder into that repository's `.github/skills/`
+directory — no other files are required.
 
 ## Usage
 
-Work on the skills through the repo's slash-command prompts (in [.github/prompts/](.github/prompts/)):
+You do not run these skills directly; an agent loads them for you. When you give an agent a task, it
+scans each skill's frontmatter `description` and, if one matches, reads that skill's `SKILL.md` and
+follows its instructions.
 
-- `/create-skill` — scaffold a new skill folder (`SKILL.md` + `LICENSE.txt`).
-- `/review-skill` — audit an existing `SKILL.md` against the conventions (read-only).
-- `/create-eval` — scaffold a skill's `<name>-workspace/` A/B evaluation harness.
-- `/run-skill-evals` — run and grade that harness.
-
-For example, `/create-skill pdf-export: turn a Markdown file into a PDF` produces a
-conventions-compliant starting point you then flesh out.
-
-## Anatomy of a skill
-
-Each skill lives in `.github/skills/<name>/` with a required `SKILL.md` (YAML frontmatter + Markdown
-instructions) and a `LICENSE.txt`, plus optional `scripts/`, `references/`, and `assets/`. See
-[AGENTS.md](AGENTS.md) for the conventions and the point-of-edit checklist in
-[.github/instructions/skill-authoring.instructions.md](.github/instructions/skill-authoring.instructions.md).
-
-## Developing skills
-
-Validate a skill's frontmatter before committing (needs `pyyaml`):
-
-```bash
-python3 .github/skills/skill-creator/scripts/quick_validate.py .github/skills/<name>
-```
-
-It checks the rules in [AGENTS.md](AGENTS.md) — allowed keys only, `name` equal to the folder, a
-non-empty `description` with no angle brackets, and a `LICENSE.txt` in the folder. CI
-([.github/workflows/validate-skills.yml](.github/workflows/validate-skills.yml)) runs it on every push
-and pull request, and a `PostToolUse` hook
-([.github/hooks/validate-skill.sh](.github/hooks/validate-skill.sh)) re-checks a `SKILL.md` after it's
-edited.
-
-Package a skill into a distributable `.skill` archive (validates first) by running as a module from
-the `skill-creator` folder:
-
-```bash
-cd .github/skills/skill-creator && python3 -m scripts.package_skill ../<name>
-```
-
-Both commands live in the `skill-creator/` skill, which isn't part of every checkout. The CI workflow
-and the `PostToolUse` hook both fail open when it's absent — CI skips validation with a notice, and a
-`SKILL.md` edit is never blocked — but the `quick_validate.py` and `package_skill.py` commands above
-only work when `.github/skills/skill-creator/` is present. When it's missing, check frontmatter by hand
-against [skill-authoring.instructions.md](.github/instructions/skill-authoring.instructions.md), or run
-the `/review-skill` prompt.
+For example, asking an agent to "write a README for this project" matches the
+[readme-authoring](.github/skills/readme-authoring/SKILL.md) skill, whose description triggers on
+exactly that request. To see what a skill does and when it activates, open its `SKILL.md` and read the
+`description` field. [AGENTS.md](AGENTS.md) explains how this discovery works in more detail.
 
 ## Contributing
 
-Conventions live in [AGENTS.md](AGENTS.md), with the point-of-edit checklist in
-[skill-authoring.instructions.md](.github/instructions/skill-authoring.instructions.md). Keep each
-change scoped to one skill folder, validate before committing, and use `/review-skill` to self-check;
-CI ([.github/workflows/validate-skills.yml](.github/workflows/validate-skills.yml)) runs the validator
-on every push and pull request.
+Contributions — new skills or improvements to existing ones — are welcome. Start with
+[AGENTS.md](AGENTS.md), which documents the skill anatomy, the `SKILL.md` frontmatter rules, and how to
+validate and package a skill. The helper prompts in [.github/prompts/](.github/prompts) scaffold and
+review skills, and every skill is checked in CI by
+[.github/workflows/validate-skills.yml](.github/workflows/validate-skills.yml). Each skill carries its
+own `LICENSE.txt`; keep it when adding or copying a skill.
+
+## Getting help
+
+Have a question or found a problem? [Open an issue](https://github.com/pjmgomez/repository-skills/issues)
+or [start a discussion](https://github.com/pjmgomez/repository-skills/discussions) on the repository's
+GitHub page.
+
+## Maintainers
+
+Maintained by the Repository Skills contributors. The best way to reach them is through the issues and
+discussions linked above.
 
 ## License
 
-[Apache License 2.0](LICENSE). Each skill also ships its own `LICENSE.txt`.
+Released under the Apache License 2.0 — see [LICENSE](LICENSE) for the full text.
